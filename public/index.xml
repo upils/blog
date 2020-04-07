@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog - RedRobin</title>
+    <link>http://blog.redrobin.company/</link>
+    <description>Recent content on Blog - RedRobin</description>
+    <generator>Hugo - gohugo.io</generator>
+    <language>en</language>
+    <contact></contact>
+    <copyright></copyright>
+    
+        <atom:link href="http://blog.redrobin.company/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Posts</title>
+      <link>http://blog.redrobin.company/posts/</link>
+      <pubDate>Mon, 06 Apr 2020 20:29:07 +0200</pubDate>
+      <author></author>
+      <guid>http://blog.redrobin.company/posts/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>
