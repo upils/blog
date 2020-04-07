@@ -36,4 +36,12 @@ Then, in the `smart` category, I have mainly researched 3 kind of methods:
 
 I would like to find completely different method to add more variety.
 
-The project if available on [github](https://github.com/upils/redirect-lib). 
+The project if available on [github](https://github.com/upils/redirect-lib).
+
+## Under the hood
+
+On every method researched, redirection is operated using either Layer 4 (TCP/IP) or Layer 7 (Application -> HTTP).
+
+Methods such as `socat`, `ssh` or `nginx` (in "stream" mode) use Layer 4 (TCP/IP) redirection. As such, they are able to redirect HTTPS traffic without any specific configuration. The drawback is : as no decryption is done, no smart/custom filtering can be done. Every request submitted to the redirector will go straight to the C2. The only exception is the use of `ssl_preread` on the nginx method to read the SNI and know the domain requested.
+
+Methods such as `cloudflare-wokers` or `traefik` use Layer 7 redirection. They need to decrypt the HTTPS traffic and are able to apply filtering.
