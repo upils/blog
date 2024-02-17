@@ -2,7 +2,7 @@ baseURL = "http://blog.redrobin.company"
 languageCode = "en"
 title = "Blog - RedRobin"
 theme = "kiss"
-Paginate = 5 # Number of posts per page
+Paginate = 5                             # Number of posts per page
 enableRobotsTXT = true
 
 [params.info]
