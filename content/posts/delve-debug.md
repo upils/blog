@@ -33,7 +33,7 @@ sbuild --no-clean
 
 ## Debug
 
-After confirming a bunch of tests were failing the same way, I picked `TestRecursiveStructure` randomly and decided to debug it. To so so, I used... delve.
+After confirming a bunch of tests were failing the same way, I picked `TestRecursiveStructure` randomly and decided to debug it. To do so, I used... delve.
 
 ```bash
 schroot -c mantic-amd64 -u root
@@ -46,7 +46,7 @@ cd delve-1.21.0/pkg/proc && go test -c -gcflags='-N -l'
 
 I learned several interesting things here:
 - you can use `go test` with the `-c` option to compile tests in a specific package and get the resulting test binary
-- you can give `-gcflags='-N -l'` flags to avoid any optimizations. At first I did not know this, and while debugging the debugger jump to weird location or missed skipped some sections (due to optimizations and inlining).
+- you can give `-gcflags='-N -l'` flags to avoid any optimizations. At first I did not know this, and while debugging the debugger jump to weird location or missed/skipped some sections (due to optimizations and inlining).
 - you can give parameters to `dlv` that should be given to the debugged binary. This way I could specifically target the test I wanted (even though I later added a breakpoint on this test).
 
 Note: To compare with a previously working situation I did the same in my jammy-based host machine. I reproduce each `dlv` command in both environments to compare results. 
@@ -138,10 +138,10 @@ loc, _ := time.LoadLocation("Mexico/BajaSur")
 tim2, _ := time.ParseInLocation("2006-01-02 15:04:05", "2022-06-07 02:03:04", loc)
 ```
 
-The call to `time.ParseInLocation()` panicked because `loc` was nil.
+The call to `time.ParseInLocation()` panicked because `loc` was `nil`.
 
 This can traced back to some changes in `tzdata` not providing some "uncommon" time zones. They are now available in `tzdata-legacy`.
 
 ## The one-line fix
 
-To fix, I simply replaced the timezone with `America/Mazatlan` (see https://github.com/go-delve/delve/pull/3527).
+To fix, I simply replaced the timezone with `America/Mazatlan`. See [this PR](https://github.com/go-delve/delve/pull/3527).
